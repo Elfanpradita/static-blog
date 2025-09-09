@@ -11,27 +11,33 @@
         :root {
             --bg-dark-mode: #1f1f1f;
             --bg-light-mode: #f8f9fa;
-            --text-dark-mode: #f8f9fa; /* Teks putih untuk mode gelap */
-            --text-light-mode: #212529; /* Teks gelap untuk mode terang */
+            --text-dark-mode: #f8f9fa;
+            --text-light-mode: #212529;
 
             --link-bg-dark: #ffffff;
             --link-text-dark: #1f1f1f;
             --link-hover-bg-dark: #f0f0f0;
 
-            --link-bg-light: #343a40; /* Latar link gelap untuk mode terang */
-            --link-text-light: #ffffff; /* Teks link putih untuk mode terang */
+            --link-bg-light: #343a40;
+            --link-text-light: #ffffff;
             --link-hover-bg-light: #495057;
         }
 
         body {
             background: linear-gradient(135deg, var(--bg-dark-mode), #333333);
-            color: var(--text-dark-mode); /* Warna teks default untuk mode gelap */
             transition: background-color 0.5s, color 0.5s;
         }
 
         body.light-mode {
             background: linear-gradient(135deg, var(--bg-light-mode), #e9ecef);
-            color: var(--text-light-mode); /* Warna teks untuk mode terang */
+        }
+
+        /* Kelas untuk mengubah warna teks berdasarkan mode */
+        .text-theme {
+            color: var(--text-dark-mode);
+        }
+        body.light-mode .text-theme {
+            color: var(--text-light-mode);
         }
 
         .link-container a {
@@ -70,12 +76,12 @@
         }
     </style>
 </head>
-<body class="bg-dark text-white">
+<body>
     <div class="container d-flex flex-column align-items-center justify-content-center vh-100">
         <div class="text-center mb-4">
             <img src="profile.jpg" alt="Foto Profil" class="profile-img rounded-circle mb-3 border border-4 border-white shadow-sm">
-            <h1 class="display-6 fw-bold">Nama Anda</h1>
-            <p class="lead">Deskripsi singkat atau bio Anda di sini.</p>
+            <h1 class="display-6 fw-bold text-theme">Elfan Pradita Rusmin</h1>
+            <p class="lead text-theme">Aku adalah manusia super.</p>
         </div>
 
         <div class="list-group w-75 link-container">
@@ -110,7 +116,7 @@
                 body.classList.add('light-mode');
                 updateButtonIcon('light');
             } else {
-                 body.classList.remove('light-mode'); // Pastikan tidak ada class light-mode jika tema dark
+                 body.classList.remove('light-mode');
                  updateButtonIcon('dark');
             }
 
