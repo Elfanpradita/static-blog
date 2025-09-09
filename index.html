@@ -9,45 +9,53 @@
     
     <style>
         :root {
-            --bg-dark: #1f1f1f;
-            --bg-light: #f8f9fa;
-            --text-dark: #212529;
-            --text-light: #f8f9fa;
+            --bg-dark-mode: #1f1f1f;
+            --bg-light-mode: #f8f9fa;
+            --text-dark-mode: #f8f9fa; /* Teks putih untuk mode gelap */
+            --text-light-mode: #212529; /* Teks gelap untuk mode terang */
+
+            --link-bg-dark: #ffffff;
+            --link-text-dark: #1f1f1f;
+            --link-hover-bg-dark: #f0f0f0;
+
+            --link-bg-light: #343a40; /* Latar link gelap untuk mode terang */
+            --link-text-light: #ffffff; /* Teks link putih untuk mode terang */
+            --link-hover-bg-light: #495057;
         }
 
         body {
-            background: linear-gradient(135deg, var(--bg-dark), #333333);
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--bg-dark-mode), #333333);
+            color: var(--text-dark-mode); /* Warna teks default untuk mode gelap */
             transition: background-color 0.5s, color 0.5s;
         }
 
         body.light-mode {
-            background: linear-gradient(135deg, var(--bg-light), #e9ecef);
-            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--bg-light-mode), #e9ecef);
+            color: var(--text-light-mode); /* Warna teks untuk mode terang */
         }
 
         .link-container a {
-            background-color: #ffffff;
-            color: #1f1f1f;
+            background-color: var(--link-bg-dark);
+            color: var(--link-text-dark);
             font-weight: bold;
             border: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.5s, color 0.5s;
             text-decoration: none;
         }
 
         .link-container a:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background-color: #f0f0f0;
+            background-color: var(--link-hover-bg-dark);
         }
 
         body.light-mode .link-container a {
-            background-color: #343a40;
-            color: #ffffff;
+            background-color: var(--link-bg-light);
+            color: var(--link-text-light);
         }
 
         body.light-mode .link-container a:hover {
-            background-color: #495057;
+            background-color: var(--link-hover-bg-light);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -102,7 +110,7 @@
                 body.classList.add('light-mode');
                 updateButtonIcon('light');
             } else {
-                 body.classList.remove('light-mode');
+                 body.classList.remove('light-mode'); // Pastikan tidak ada class light-mode jika tema dark
                  updateButtonIcon('dark');
             }
 
