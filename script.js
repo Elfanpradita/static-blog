@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Static site loaded successfully 🚀");
-});
+  const toggleBtn = document.getElementById("toggleTheme");
+  toggleBtn.addEvent
